@@ -1,0 +1,19 @@
+<div class="weather-widget p-3 rounded border w-100">
+  <div class="header text-start border-bottom mb-3">
+    <h2 class="mb-1">{{ currentWeather$()?.city_name }}, {{ currentWeather$()?.country_code }}</h2>
+  </div>
+  <div class="d-flex gap-5">
+    <div class="temperature d-flex justify-content-center align-items-center gap-2">
+      <img src="https://cdn.weatherbit.io/static/img/icons/{{ currentWeather$()?.weather?.icon }}.png" alt="{{ currentWeather$()?.weather?.description }}">
+      <h1 class="mb-0">{{ currentWeather$()?.temp }}°C</h1>
+    </div>
+    <div class="details">
+      <p>Відчувається як: {{ currentWeather$()?.app_temp }}°C</p>
+      <p>Вологість: {{ currentWeather$()?.rh }}%</p>
+      <p>Вітер: {{ currentWeather$()?.wind_spd }} м/с, {{ currentWeather$()?.wind_cdir_full }}</p>
+      <p>Тиск: {{ currentWeather$()?.pres }} hPa</p>
+      <p class="mb-0">Видимість: {{ currentWeather$()?.vis }} км</p>
+    </div>
+  </div>
+</div>
+

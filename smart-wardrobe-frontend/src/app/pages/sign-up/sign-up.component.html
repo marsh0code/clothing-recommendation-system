@@ -1,0 +1,33 @@
+<!-- TODO: add loader -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div>
+        <h2>Реєстрація</h2>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+          <div class="form-group">
+            <label for="registerUsername">Логін</label>
+            <input type="text" class="form-control" id="registerUsername" [formControl]="signUpForm.controls.username" name="registerUsername" placeholder="Введіть логін">
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">Ел. Пошта</label>
+            <input type="email" class="form-control" id="registerEmail" [formControl]="signUpForm.controls.email" name="registerEmail" placeholder="Введіть Ел. Пошту">
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Пароль</label>
+            <input type="password" class="form-control" id="registerPassword" [formControl]="signUpForm.controls.password" name="registerPassword" placeholder="Введіть пароль">
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between mt-2">
+            <button mat-flat-button type="submit" class="rounded" [disabled]="signUpForm.invalid">Зареєструватись</button>
+            <div class="ps-2">
+              Вже зареєстровані? <br>
+              <button type="button" class="btn btn-link p-0" (click)="openSignInPage()">Увійти в акаунт</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

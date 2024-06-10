@@ -1,0 +1,24 @@
+.wardrobe-item {
+  width: 252.8px;
+  overflow: hidden;
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+  }
+}
+
+.delete-icon-button {
+  font-size: 14px;
+  width: fit-content;
+  color: white;
+  background: rgb(236, 0, 0);
+}
+
+.edit-icon-button {
+  font-size: 14px;
+  width: fit-content;
+  background: #005cbb;
+  color: white;
+}

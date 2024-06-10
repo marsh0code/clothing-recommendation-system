@@ -1,0 +1,28 @@
+<mat-toolbar class="border-bottom position-fixed w-100 top-0 z-3">
+  <div class="container d-flex justify-content-between align-items-center">
+    <button mat-button class="rounded" [routerLink]="'wardrobe'">
+      <h6>Розумний Гардероб</h6>
+    </button>
+
+    @if (isAuthenticated$()) {
+      <button mat-flat-button class="rounded user-button d-flex" [matMenuTriggerFor]="accountActions">
+        @if (user$()?.imageUrl) {
+          <img class="user-image" [src]="('http://localhost:8080/users/self/image') | getSecuredImage | async">
+        } @else {
+          <img class="user-image" src="empty-user-image.jpg">
+        }
+        {{ user$()?.username }}
+      </button>
+
+      <mat-menu #accountActions="matMenu">
+        <a mat-menu-item class="dropdown-item" (click)="openProfile()">Профіль</a>
+        <a mat-menu-item class="dropdown-item" (click)="logOut()">Вийти</a>
+      </mat-menu>
+    } @else {
+      <div class="d-flex gap-2">
+        <button mat-flat-button class="rounded" [routerLink]="'sign-in'">Увійти</button>
+        <button mat-flat-button class="rounded" [routerLink]="'sign-up'">Зареєструватись</button>
+      </div>
+    }
+  </div>
+</mat-toolbar>

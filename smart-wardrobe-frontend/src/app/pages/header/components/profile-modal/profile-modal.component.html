@@ -1,0 +1,28 @@
+<div class="p-3 overflow-hidden">
+  <form [formGroup]="profileForm" (ngSubmit)="submitForm()">
+    <div class="modal-body">
+      <table>
+        <tr class="d-flex gap-5 justify-content-between align-items-center mb-2">
+          <td>Фото:</td>
+          <td><input class="form-control w-100" type="file" (change)="onFileSelected($event)"></td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center mb-2">
+          <td>Логін:</td>
+          <td><input class="form-control w-100" type="text" placeholder="Введіть логін" [formControl]="profileForm.controls.username"></td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center mb-2">
+          <td>Ел. Пошта:</td>
+          <td><input class="form-control w-100" type="email" placeholder="Введіть Ел. Пошту" [formControl]="profileForm.controls.email"></td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center mb-2">
+          <td>Пароль:</td>
+          <td><input class="form-control w-100" type="password" placeholder="Введіть пароль" [formControl]="profileForm.controls.password"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer d-flex gap-2">
+      <button mat-flat-button type="submit" class="rounded" [disabled]="profileForm.invalid || loading()">Редагувати</button>
+      <button mat-flat-button type="button" color="warn" class="rounded" mat-dialog-close>Закрити</button>
+    </div>
+  </form>
+</div>

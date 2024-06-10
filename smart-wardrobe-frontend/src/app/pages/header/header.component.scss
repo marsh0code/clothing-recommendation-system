@@ -1,0 +1,16 @@
+.user-button {
+  height: 48px;
+  position: relative;
+  padding-left: 65px;
+}
+
+.user-image {
+  border: 1px solid #005CBB;
+  position: absolute;
+  left: -65px;
+  border-radius: 5px 0 0 5px;
+  top: -10px;
+  aspect-ratio: 1 / 1;
+  height: 48px;
+  object-fit: cover;
+}

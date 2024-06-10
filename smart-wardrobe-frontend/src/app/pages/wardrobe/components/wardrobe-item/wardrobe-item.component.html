@@ -1,0 +1,31 @@
+<div class="border wardrobe-item rounded position-relative"
+   [class.border-transparent]="!percentage"
+   [class.border-5]="percentage"
+   [class.border-warning]="percentage && (percentage > 30 && percentage < 60)"
+   [class.border-danger]="percentage && (percentage < 30)"
+   [class.border-success]="percentage && (percentage > 60)"
+>
+    <div class="d-flex justify-content-end gap-2 bg-light bg-opacity-75 position-absolute top-0 end-0 p-2 rounded-bottom">
+      @if (!suppressActions) {
+        <button mat-icon-button class="rounded edit-icon-button" (click)="itemEdited.emit(item.id)">
+          <mat-icon fontIcon="edit"></mat-icon>
+        </button>
+        <button mat-icon-button color="warn" class="rounded delete-icon-button" (click)="itemDeleted.emit(item.id)">
+          <mat-icon fontIcon="delete"></mat-icon>
+        </button>
+      }
+
+      @if (percentage) {
+        <span #tooltip="matTooltip" matTooltip="Відсоток співпадіння">{{ percentage | number: '1.0-0' }}%</span>
+      }
+    </div>
+
+  @if (item.imageUrl) {
+    <img class="wardrobe-item__image border-bottom" [src]="('http://localhost:8080/clothes/' + item.id + '/image') | getSecuredImage | async">
+  } @else {
+    <img src="no-image-available.png" class="wardrobe-item__image border-bottom">
+  }
+  <div class="py-1 px-2 wardrobe-item__heading position-absolute bottom-0 bg-light bg-opacity-75 w-100 border-top">
+    <h6 [class.mb-0]="suppressActions">{{ item.name }}</h6>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --bg-secondary: #e0e0ff;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-control.ng-invalid.ng-dirty:not(:focus) {
+  border: 2px solid red;
+}
+
+.error-toast {
+  margin-top: 10px;
+  background-color: #dc3545;
+  color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.success-toast {
+  margin-top: 10px;
+  background-color: #248808;
+  color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.toast-bottom-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

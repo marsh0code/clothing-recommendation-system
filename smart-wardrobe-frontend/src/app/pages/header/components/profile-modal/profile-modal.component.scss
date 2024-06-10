@@ -1,0 +1,9 @@
+::ng-deep {
+  .mat-mdc-dialog-surface {
+    border-radius: var(--bs-border-radius);
+  }
+}
+
+.form-control {
+  width: 300px !important;
+}

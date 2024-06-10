@@ -1,0 +1,28 @@
+<!-- TODO: add loader -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div>
+        <h2>Вхід</h2>
+        <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+          <div class="form-group">
+            <label for="loginUsername">Логін</label>
+            <input type="text" class="form-control" id="loginUsername" [formControl]="signInForm.controls.username" name="loginUsername" placeholder="Введіть логін">
+          </div>
+          <div class="form-group mt-2">
+            <label for="loginPassword">Пароль</label>
+            <input type="password" class="form-control" id="loginPassword" [formControl]="signInForm.controls.password" name="loginPassword" placeholder="Введіть пароль">
+          </div>
+          <div class="d-flex align-items-center justify-content-between mt-2">
+            <button mat-flat-button type="submit" class="rounded" [disabled]="signInForm.invalid">Увійти</button>
+            <div class="ps-2">
+              Не маєте особистого акаунту? <br>
+              <button type="button" class="btn btn-link p-0" (click)="openSignUpPage()">Зареєструватись</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+@if (doesLocationAllowed$()) {
+  <div class="container mt-2">
+    <app-weather-widget></app-weather-widget>
+
+    <div class="d-flex gap-2 mt-2">
+      <button mat-flat-button class="rounded" (click)="openItemCreationModal()">+</button>
+      <input #searchInput class="form-control" type="search" placeholder="Пошук за назвою" (input)="searchValue$.set(searchInput.value)">
+      <mat-slide-toggle
+        color="primary"
+        [checked]="recommendationMode$()"
+        (change)="recommendationMode$.set($event.checked)">
+        Рекомендований гардероб
+      </mat-slide-toggle>
+    </div>
+
+    @if (recommendationMode$()) {
+      @for (category of recommendedClothesGroupedByType$() | keyvalue; track category; let last = $last; let first = $first) {
+        <div class="my-2 gap-2 recommendations-catalogue" [class.border-end]="!last">
+          <h5 class="border-bottom pb-2">{{ clothTypeLabel[category.key] }}</h5>
+
+          <div class="d-flex gap-2">
+            @for (item of category.value; track item.clothingItem.id) {
+              <app-wardrobe-item [percentage]="item.percentage" [item]="item.clothingItem" [suppressActions]="true"></app-wardrobe-item>
+            }
+          </div>
+        </div>
+      } @empty {
+        <div class="my-2">
+          Ваш гардероб на даний момент пустий.
+        </div>
+      }
+    } @else {
+      <div class="my-2 d-flex flex-wrap gap-2">
+        @for (item of clothesFilteredByName$(); track item.id) {
+          <app-wardrobe-item [item]="item" (itemDeleted)="deleteItem($event)" (itemEdited)="openItemEditionModal($event)"></app-wardrobe-item>
+        } @empty {
+          Ваш гардероб на даний момент пустий.
+        }
+      </div>
+    }
+  </div>
+} @else {
+  <app-location-not-allowed></app-location-not-allowed>
+}

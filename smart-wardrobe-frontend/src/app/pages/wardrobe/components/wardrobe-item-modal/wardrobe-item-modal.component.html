@@ -1,0 +1,78 @@
+<div class="p-3 overflow-hidden">
+  <form [formGroup]="wardrobeItemForm" (ngSubmit)="submitForm()">
+    <div class="modal-body">
+      <table>
+        <tr class="d-flex gap-5 justify-content-between align-items-center mb-2">
+          <td>Фото:</td>
+          <td><input class="form-control w-100" type="file" (change)="onFileSelected($event)"></td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center mb-2">
+          <td>Назва:</td>
+          <td><input class="form-control w-100" type="text" placeholder="Введіть назву одягу" [formControl]="wardrobeItemForm.controls.name"></td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center">
+          <td>Тепло:</td>
+          <td>
+            <mat-slider class="mx-0" [max]="10" [min]="1" [step]="1" [discrete]="true">
+              <input matSliderThumb [formControl]="wardrobeItemForm.controls.warmth">
+            </mat-slider>
+          </td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center">
+          <td>Захист від вітру:</td>
+          <td>
+            <mat-slider class="mx-0" [max]="10" [min]="1" [step]="1" [discrete]="true">
+              <input matSliderThumb [formControl]="wardrobeItemForm.controls.windResistance">
+            </mat-slider>
+          </td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center">
+          <td>Захист від води:</td>
+          <td>
+            <mat-slider class="mx-0" [max]="10" [min]="1" [step]="1" [discrete]="true">
+              <input matSliderThumb [formControl]="wardrobeItemForm.controls.waterResistance">
+            </mat-slider>
+          </td>
+        </tr>
+        <tr class="d-flex gap-5 justify-content-between align-items-center">
+          <td>Коефіцієнт стилю:</td>
+          <td>
+            <mat-slider class="mx-0" [max]="10" [min]="1" [step]="1" [discrete]="true">
+              <input matSliderThumb [formControl]="wardrobeItemForm.controls.styleCoefficient">
+            </mat-slider>
+          </td>
+        </tr>
+        <tr class="d-flex gap-2 justify-content-between align-items-center">
+          <td class="w-100">
+            <mat-form-field class="w-100">
+              <mat-label>Тип одягу:</mat-label>
+              <mat-select [formControl]="wardrobeItemForm.controls.clothingType">
+                <mat-option [value]="ClothingType.OuterWear">Зовнішній одяг</mat-option>
+                <mat-option [value]="ClothingType.BottomWear">Нижній одяг</mat-option>
+                <mat-option [value]="ClothingType.FootWear">Взуття</mat-option>
+                <mat-option [value]="ClothingType.TopWear">Верхній одяг</mat-option>
+                <mat-option [value]="ClothingType.HeadWear">Головні убори</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td class="w-100">
+            <mat-form-field class="w-100">
+              <mat-label>Стиль:</mat-label>
+              <mat-select [formControl]="wardrobeItemForm.controls.styleType">
+                <mat-option [value]="StyleType.Casual">Повсякденний</mat-option>
+                <mat-option [value]="StyleType.Sport">Спортивний</mat-option>
+                <mat-option [value]="StyleType.Home">Домашній</mat-option>
+                <mat-option [value]="StyleType.Official">Офіційний</mat-option>
+                <mat-option [value]="StyleType.Other">Інший</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer d-flex gap-2">
+      <button mat-flat-button type="submit" class="rounded" [disabled]="wardrobeItemForm.invalid || loading()">Додати одяг</button>
+      <button mat-flat-button type="button" color="warn" class="rounded" mat-dialog-close>Закрити</button>
+    </div>
+  </form>
+</div>
